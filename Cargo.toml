@@ -1,0 +1,33 @@
+[package]
+name = "l4d2-audit-tool"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+eframe = "0.29"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "json"] }
+tokio = { version = "1.40", features = ["rt-multi-thread", "sync", "time"] }
+sha2 = "0.10"
+windows = { version = "0.58", features = [
+    "Win32_Foundation",
+    "Win32_System_ProcessStatus",
+    "Win32_System_Threading",
+    "Win32_System_Diagnostics_ToolHelp",
+    "Win32_System_Diagnostics_Debug",
+    "Win32_System_Memory",
+    "Win32_Security",
+    "Win32_System_Registry",
+    "Win32_Storage_FileSystem",
+] }
+winreg = "0.52"
+
+# Optimization flags for single compact binary in release
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

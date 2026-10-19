@@ -1,3 +1,7 @@
+# Rust
+/target
+Cargo.lock.bak
+
 # Visual Studio / .NET
 [Bb]in/
 [Oo]bj/
